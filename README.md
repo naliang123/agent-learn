@@ -23,10 +23,11 @@
 ## 快速开始
 
 ```bash
-git clone git@github.com:naliang123/agent-learn.git
+git clone https://github.com/naliang123/agent-learn.git
 cd agent-learn
-# 注：本机直连 github.com:443 不通。SSH 走 ssh.github.com:443 可直连；
-# 若改用 HTTPS，必须先设置可用的 http_proxy/https_proxy，否则会连接超时。
+# 若 clone 超时：本机不配代理时 git 连不上 github.com:443，执行
+#   git config --global http.https://github.com.proxy http://127.0.0.1:7897
+# （7897 是 Clash Verge 的 mixed-port；或改用 SSH：git@github.com:naliang123/agent-learn.git）
 uv sync                      # 安装全部依赖（torch 走 pytorch cu126 源）
 uv run python scripts/env_smoke_test.py   # 环境验收：GPU / 本地模型 / Milvus / LangChain
 ```
