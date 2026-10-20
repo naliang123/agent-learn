@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+
+# uv
+.python-version
+
+# 环境与密钥
+.env
+*.local
+
+# 数据与模型产物（不提交大文件）
+data/raw/
+models/
+*.db
+*.db.lock
+*.wal
+_smoke_milvus.db*
+
+# 评测产物
+evals/results/
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
