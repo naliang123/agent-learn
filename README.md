@@ -23,7 +23,7 @@
 ## 快速开始
 
 ```bash
-git clone git@github.com:LN-Dev21/agent-learn.git
+git clone git@github.com:naliang123/agent-learn.git
 cd agent-learn
 uv sync                      # 安装全部依赖（torch 走 pytorch cu126 源）
 uv run python scripts/env_smoke_test.py   # 环境验收：GPU / 本地模型 / Milvus / LangChain
