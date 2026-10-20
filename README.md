@@ -23,8 +23,10 @@
 ## 快速开始
 
 ```bash
-git clone git@github.com:naliang123/agent-learn.git
+git clone https://github.com/naliang123/agent-learn.git
 cd agent-learn
+# 若 HTTPS 被本地代理拦截（报 502），改用 SSH：
+# git clone git@github.com:naliang123/agent-learn.git
 uv sync                      # 安装全部依赖（torch 走 pytorch cu126 源）
 uv run python scripts/env_smoke_test.py   # 环境验收：GPU / 本地模型 / Milvus / LangChain
 ```
