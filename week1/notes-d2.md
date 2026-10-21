@@ -58,4 +58,70 @@ uv run python week1/02_tool_calling.py
 
 ## 今天卡住的问题
 
--
+**为什么 LLM 需要工具？**
+
+- 获取实时数据
+- 查询私有数据库
+- 读写文件
+- 调用内部系统
+- 执行代码
+- 与外部 API 交互
+
+模型擅长的是理解、推理、生成。
+
+工具解决的是访问外部世界和执行动作。
+
+**关键的是分工：**
+
+模型负责：
+
+- 根据当前输入决定是否调用工具
+- 选择工具并生成参数
+- 根据工具结果继续决策或组织答案
+
+程序负责：
+
+- 校验模型生成的工具名和参数
+- 真正执行工具
+- 处理权限、超时、重试和异常
+- 把结果按协议返回给模型
+
+
+role:
+
+- system:系统级规则
+- developer:开发者指令
+- user:用户提供的目标和内容
+- assistant:模型产生的文本、工具请求或其他输出
+- tool:在部分 Chat Comoletions 风格协议中表示执行结果，不是模型自己生成的事实。
+
+```json
+{
+  "id": "chatcmpl_example",
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_weather_01",
+            "type": "function",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"city\":\"上海\",\"unit\":\"celsius\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 312,
+    "completion_tokens": 28,
+    "total_tokens": 340
+  }
+}
+```
+
